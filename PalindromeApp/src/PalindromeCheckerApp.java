@@ -1,38 +1,51 @@
 /**
- *        MAIN CLASS - UseCase3PalindromCheckerApp
- * Use Case 3: Reverse String Palindrome Check
+ * ====================================================================
+ *              MAIN CLASS - UseCase3PalindromCheckerApp
+ * ====================================================================
+ * Use Case 4: Character Array Based validation
  *
  * Description
  * This class checks whether a string is a palindrome
- * by reversing the string comparing it with the original value
+ * going with two pointers
  *
  * At this stage, the application:
- * - Iterates the string in reverse order
- * - Builds a reversed version
- * -compares original and reversed strings
- * - Displays
+ * - Converts String into char array
+ * - uses start and end pointers
+ * - compares original and reversed strings
+ * - Displays the result
  *
- * This introduces transformation based valiadtion
+ *  This reduces extra memory usage
  *
  */
 
 
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String original = "LEVEL";
-        String reversed = "";
+        String input = "racecar";
 
-        // Loop to iterate through characters in reverse order
-        for (int i = original.length() - 1; i >= 0; i--) {
-            // String Concatenation (+) creates a new String object each time due to Immutability
-            reversed = reversed + original.charAt(i);
+
+        char[] charArray = input.toCharArray();
+
+
+        int start = 0;
+        int end = charArray.length - 1;
+        boolean isPalindrome = true;
+
+
+        while (start < end) {
+
+            if (charArray[start] != charArray[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        // equals() Method compares actual content, not memory references
-        if (original.equals(reversed)) {
-            System.out.println(original + " is a palindrome.");
+        if (isPalindrome) {
+            System.out.println(input + " is a palindrome.");
         } else {
-            System.out.println(original + " is not a palindrome.");
+            System.out.println(input + " is not a palindrome.");
         }
     }
 }
